@@ -284,7 +284,7 @@ export function Hero() {
 
         {/* Momentos narrativos (bottom-left). */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-6 pb-28 md:px-12 md:pb-32">
-          <div className="relative h-[42vh] max-w-[58ch] md:h-[40vh]">
+          <div className="relative h-[42vh] max-w-[46rem] md:h-[40vh] lg:max-w-[52rem]">
             {HERO_MOMENTS.map((m, i) => (
               <div
                 key={m.id}
@@ -294,7 +294,7 @@ export function Hero() {
                 className="absolute bottom-0 left-0 flex flex-col gap-4"
                 style={{ opacity: i === 0 ? 1 : 0, transition: "opacity 90ms linear" }}
               >
-                <h2 className="max-w-[18ch] font-sans text-4xl font-semibold leading-[0.98] tracking-tight text-white md:text-6xl lg:text-7xl">
+                <h2 className="max-w-[18ch] text-balance font-sans text-3xl font-semibold leading-[1.05] tracking-tight text-white md:max-w-[46ch] md:text-[2.6rem] lg:text-5xl">
                   {m.headline}
                 </h2>
                 <p className="max-w-[40ch] text-balance text-sm leading-relaxed text-white/70 md:text-base">
