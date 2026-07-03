@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MACNOR — DESIGN TOKENS
+   Paleta institucional. A página começa escura (HERO) e se
+   torna clara/editorial nas seções seguintes (complexidade →
+   clareza). Tokens base = tema CLARO; a HERO e a seção de
+   Services aplicam superfícies escuras por seção.
+   ============================================================ */
+:root {
+  /* Paleta da marca */
+  --navy: #182050;
+  --deep: #10183f;
+  --dark: #090f26;
+  --graphite: #3e4653;
+  --gray: #7d8794;
+  --gray-soft: #b9c0c9; /* cinza claro — estado "não revelado" do texto */
+  --light: #f3f5f7;
+  --white: #ffffff;
+  --amber: #c58a3d;
+
+  /* Tokens semânticos (tema claro = padrão da página) */
+  --background: var(--white);
+  --surface: var(--light);
+  --foreground: var(--deep);
+  --muted: var(--gray);
+  --accent: var(--amber);
+  --accent-soft: rgba(197, 138, 61, 0.12);
+  --border: rgba(16, 24, 63, 0.1);
+  --hairline: rgba(16, 24, 63, 0.08);
+
+  /* Card "glass" sobre fundo escuro (HERO / Services) */
+  --card-bg: rgba(16, 24, 63, 0.42);
+  --card-border: rgba(255, 255, 255, 0.1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-border: var(--border);
+
+  --color-navy: var(--navy);
+  --color-deep: var(--deep);
+  --color-dark: var(--dark);
+  --color-graphite: var(--graphite);
+  --color-gray: var(--gray);
+  --color-light: var(--light);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--dark);
+}
+
+/* Foco visível para navegação por teclado (a11y). :where = baixa
+   especificidade, então componentes ainda podem sobrepor. */
+:where(a, button, [role="button"], input, textarea, select):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Reduz o atraso de toque e melhora resposta no mobile. */
+a,
+button,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+/* ============================================================
+   SUPERFÍCIES POR SEÇÃO
+   ============================================================ */
+
+/* Bloco escuro institucional (HERO closing, Services, CTA). */
+.surface-dark {
+  background: var(--deep);
+  color: var(--white);
+}
+.surface-darkest {
+  background: var(--dark);
+  color: var(--white);
+}
+.surface-light {
+  background: var(--light);
+  color: var(--deep);
+}
+
+/* Card "glass" — usado sobre fundos escuros. */
+.card-surface {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.05) inset,
+    0 24px 48px -28px rgba(0, 0, 0, 0.7);
+}
+
+/* Rótulo de seção (eyebrow) — caixa alta, tracking aberto. */
+.eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* Marcação de placeholder (imagem/logo a inserir). */
+.placeholder-media {
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(125, 135, 148, 0.06),
+      rgba(125, 135, 148, 0.06) 12px,
+      rgba(125, 135, 148, 0.12) 12px,
+      rgba(125, 135, 148, 0.12) 24px
+    );
+  border: 1px dashed rgba(125, 135, 148, 0.45);
+}
+.placeholder-media[data-dark="true"] {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.03) 12px,
+      rgba(255, 255, 255, 0.07) 12px,
+      rgba(255, 255, 255, 0.07) 24px
+    );
+  border: 1px dashed rgba(255, 255, 255, 0.28);
+}
+
+/* ============================================================
+   MOTOR DE SCROLL DA HERO
+   A altura da seção define a "distância" da animação.
+   ============================================================ */
+.scroll-animation {
+  height: 520vh;
+}
+@media (max-width: 1024px) {
+  .scroll-animation {
+    height: 420vh;
+  }
+}
+@media (max-width: 768px) {
+  .scroll-animation {
+    height: 320vh;
+  }
+}
+
+/* Linha de marca (curva do logo) usada como divisor sutil. */
+.brand-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 40%,
+    var(--accent) 60%,
+    transparent
+  );
+  opacity: 0.6;
+}
+
+/* Reduced motion: corta animações longas e scrubbing visual. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
