@@ -18,29 +18,41 @@ export function Partners() {
         {/* Marcas em ordem alfabética — monocromia, cor no hover. */}
         <AnimatedItem className="mt-12">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            {PARTNERS.map((p) => (
-              <div
-                key={p.name}
-                className={`flex h-24 items-center justify-center rounded-xl border border-border bg-white transition-colors duration-300 hover:border-accent/40 ${
-                  p.big === "xl" ? "p-2" : "p-5"
-                }`}
-                title={p.name}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.file}
-                  alt={p.name}
-                  className={`${
-                    p.big === "xl"
-                      ? "max-h-20"
-                      : p.big
-                        ? "max-h-16"
-                        : "max-h-12"
-                  } max-w-full object-contain opacity-90 transition-opacity duration-300 hover:opacity-100`}
-                  loading="lazy"
-                />
-              </div>
-            ))}
+            {PARTNERS.map((p) => {
+              const Wrapper = p.href ? "a" : "div";
+              return (
+                <Wrapper
+                  key={p.name}
+                  href={p.href}
+                  title={p.href ? `${p.name} — ver página` : p.name}
+                  className={`group relative flex h-24 items-center justify-center rounded-xl border border-border bg-white transition-colors duration-300 hover:border-accent/40 ${
+                    p.big === "xl" ? "p-2" : "p-5"
+                  }`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={p.file}
+                    alt={p.name}
+                    className={`${
+                      p.big === "xl"
+                        ? "max-h-20"
+                        : p.big
+                          ? "max-h-16"
+                          : "max-h-12"
+                    } max-w-full object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100`}
+                    loading="lazy"
+                  />
+                  {p.href && (
+                    <span
+                      aria-hidden
+                      className="absolute bottom-2 right-2 text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    >
+                      &rarr;
+                    </span>
+                  )}
+                </Wrapper>
+              );
+            })}
           </div>
         </AnimatedItem>
       </AnimatedSection>

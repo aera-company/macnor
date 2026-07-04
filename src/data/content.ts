@@ -298,11 +298,17 @@ export const PARTNERS_INTRO = {
 };
 
 // Marcas em ordem alfabética (logos em /public/logos).
-export const PARTNERS = [
+// `href` opcional → o logo vira link para uma página da marca.
+export const PARTNERS: {
+  name: string;
+  file: string;
+  href?: string;
+  big?: boolean | "xl";
+}[] = [
   { name: "Aeron", file: "/logos/aeron.svg" },
   { name: "Aksisfire", file: "/logos/aksisfire.svg" },
   { name: "Beha-Hedo", file: "/logos/beha-hedo.png" },
-  { name: "Brunvoll", file: "/logos/brunvoll.svg" },
+  { name: "Brunvoll", file: "/logos/brunvoll.svg", href: "/marine/brunvoll" },
   { name: "Delitek", file: "/logos/delitek.png" },
   { name: "DOE", file: "/logos/doe.svg" },
   { name: "Eltorque", file: "/logos/eltorque.webp" },
@@ -322,6 +328,50 @@ export const PARTNERS = [
   { name: "Ulmatec", file: "/logos/ulmatec.svg" },
   { name: "Ulstein", file: "/logos/ulstein.jpg", big: "xl" },
 ];
+
+/* ---------- PÁGINA /marine/brunvoll ---------- */
+export const BRUNVOLL = {
+  name: "Brunvoll",
+  origin: "Molde, Noruega",
+  tagline: "Propulsão, posicionamento e manobra — para qualquer embarcação.",
+  lead: "Engenharia norueguesa de propulsão, feita sob medida.",
+  about:
+    "Fundada em Molde, na Noruega, a Brunvoll é fornecedora single-source de sistemas completos de propulsão, posicionamento e manobra. Cada sistema é projetado sob medida, com propulsores otimizados para as condições mais exigentes do ambiente marítimo — reunindo confiabilidade, eficiência e longevidade em uma única fonte.",
+  represented:
+    "No Brasil, a MACNOR representa a Brunvoll, conectando essa tecnologia à engenharia e ao suporte técnico locais.",
+  products: [
+    {
+      name: "Hélices",
+      desc: "Hélices de passo controlável, otimizadas para máxima eficiência em cada embarcação.",
+      image: "/brunvoll/propellers.jpg",
+    },
+    {
+      name: "Thrusters de túnel",
+      desc: "Manobra precisa em qualquer tipo de navio — inclusive versões LowNoise para conforto a bordo.",
+      image: "/brunvoll/tunnel-thrusters.jpg",
+    },
+    {
+      name: "Thrusters azimutais",
+      desc: "Unidades azimutais e retráteis para posicionamento dinâmico e propulsão auxiliar.",
+      image: "/brunvoll/azimuth-thrusters.jpg",
+    },
+    {
+      name: "Rim Driven Thrusters",
+      desc: "Propulsores de acionamento elétrico por anel — compactos e silenciosos.",
+      image: "/brunvoll/rim-driven.jpg",
+    },
+    {
+      name: "Caixas redutoras",
+      desc: "Redutores customizados para diferentes modos de operação e funções PTO/PTI.",
+      image: "/brunvoll/gearboxes.jpg",
+    },
+    {
+      name: "Controle & posicionamento",
+      desc: "Sistemas BruCon de acionamento, controle e posicionamento dinâmico (DP).",
+      image: "/brunvoll/control.jpg",
+    },
+  ],
+};
 
 /* ---------- SEÇÃO 9 · BASES E SUPORTE ---------- */
 export const BASES_INTRO = {
