@@ -72,8 +72,8 @@ export default function BrunvollPage() {
               <div className="overflow-hidden rounded-2xl ring-1 ring-deep/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/brunvoll/water.jpg"
-                  alt="Superfície do mar"
+                  src="/brunvoll/team.jpg"
+                  alt="Equipe da Brunvoll montando um sistema de propulsão"
                   loading="lazy"
                   className="h-[300px] w-full object-cover md:h-[440px]"
                 />

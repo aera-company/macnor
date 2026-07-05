@@ -56,6 +56,20 @@ export default function MarinePage() {
 
         {/* Marcas e parceiros (agora dentro de Marine). */}
         <Partners />
+
+        {/* Voltar para a página anterior. */}
+        <div className="bg-white px-6 md:px-10">
+          <div className="mx-auto max-w-[1320px] border-t border-border py-10 md:py-12">
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 py-2 text-sm font-medium text-graphite transition-colors hover:text-accent"
+            >
+              <span aria-hidden className="text-accent">&larr;</span>
+              Voltar
+            </a>
+          </div>
+        </div>
+
         <FinalCTA />
       </main>
       <Footer />
